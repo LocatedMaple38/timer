@@ -1,5 +1,3 @@
-int appWidth, appHeight;
-
 float xTime1, yTime1, widthTime1, heightTime1;
 float xTime2, yTime2, widthTime2, heightTime2;
 float xStartTime1, yStartTime1, widthStartTime1, heightStartTime1;
@@ -12,10 +10,12 @@ float xResetTime1, yResetTime1, widthResetTime1, heightResetTime1;
 float xResetTime2, yRestTime2, widthResetTime2, heightResetTime2;
 float xResetTimeAll, yResetTimeAll, widthResetTimeAll, heightResetTimeAll;
 
+int appWidth, appHeight;
+
 void setup(){
   
   println("Width:"+width, "\t", "Height:"+height);
-  println("Display Width: "+displayWidth, "\tDisplay Height: "+displayHeight);
+  println("Display Width: "+displayWidth, "\t Display Height: "+displayHeight);
   size(1000, 500);
   appWidth = width;
   appHeight = height;
@@ -59,8 +59,21 @@ void setup(){
   yStartTimeAll = appHeight*9/10;
   widthStartTimeAll = appWidth-1;
   heightStartTimeAll = appHeight*1/10;
-  
-  
+
+  xStopTime1 = appWidth*0;
+  yStopTime1 = appHeight*7/12;
+  widthSropTime1 = appWidth*1/12;
+  heightStopTime1 = appHeight*1/12;
+
+  xStopTime2 = appWidth*1/2;
+  yStopTime2 = appHeight*7/12;
+  widthStopTime2 = appWidth*1/12;
+  heightStopTime2 = appHeight*1/12;
+
+  xStopTimeAll = appWidth*0;
+  yStopTimeAll = appHeigbt*9/10;
+  widthStopTimeAll = appWidth-1;
+  heightStopTimeAll = appHeight*1/10;
   
 }
 void draw(){
@@ -76,11 +89,24 @@ void draw(){
   rect(xResetTimeAll, yResetTimeAll, widthResetTimeAll, heightResetTimeAll);
   rect(xResetTime1, yResetTime1, widthResetTime1, heightResetTime1);
   rect(xResetTime2, yRestTime2, widthResetTime2, heightResetTime2);
+  fill(255, 0, 0);
+  rect(xStopTime1, yStopTime1, widthSropTime1, heightStopTime1);
+  rect(xStopTime2, yStopTime2, widthStopTime2, heightStopTime2);
+  rect(xStopTimeAll, yStopTimeAll, widthStopTimeAll, heightStopTimeAll);
   
 }
 void keyPressed(){
   
 }
 void mousePressed(){
-  
+
+  if (mouseX>xResetTime1 && mouseX<xResetTime1+widthResetTime1 && mouseY>yResetTime1 && mouseY<yResetTime1+heightResetTime1){
+    println("Time 1 Reset");
+  }
+  if(mouseX>xResetTime2 && mouseX<xResetTime2+widthResetTime2 && mouseY>yResetTime2 && mouseY<yResetTime2+heightResetTime2){
+    println("Time 2 Reset);
+  }
+  if(mouseX>xResetTimeAll && mouseX<xResetTimeAll+widthResetTimeAll && mouseY>yResetTimeAll && mouseY<yResetTimeAll+heightResetTimeAll){
+    println("All Time Reset");
+  }
 }
