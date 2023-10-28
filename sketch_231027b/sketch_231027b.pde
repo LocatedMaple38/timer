@@ -104,7 +104,7 @@ void mousePressed(){
     println("Time 1 Reset");
   }
   if(mouseX>xResetTime2 && mouseX<xResetTime2+widthResetTime2 && mouseY>yResetTime2 && mouseY<yResetTime2+heightResetTime2){
-    println("Time 2 Reset);
+    println("Time 2 Reset");
   }
   if(mouseX>xResetTimeAll && mouseX<xResetTimeAll+widthResetTimeAll && mouseY>yResetTimeAll && mouseY<yResetTimeAll+heightResetTimeAll){
     println("All Time Reset");
