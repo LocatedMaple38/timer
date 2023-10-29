@@ -12,6 +12,8 @@ float xResetTimeAll, yResetTimeAll, widthResetTimeAll, heightResetTimeAll;
 
 int appWidth, appHeight;
 
+PFont mono;
+
 void setup(){
   
   println("Width:"+width, "\t", "Height:"+height);
@@ -19,6 +21,12 @@ void setup(){
   size(1000, 500);
   appWidth = width;
   appHeight = height;
+
+  mono = createFont("andalemo.ttf", 128);
+  background(0);
+  textFont(mono);
+  text("10:00", xTime1*1/2, yTime1*1/2);
+  text("2:00", xTime2*1/2, yTime2*1/2);
 
   xTime1 = appWidth*0;
   yTime1 = appHeight*0;
@@ -39,7 +47,12 @@ void setup(){
   yRestTime2 = appHeight*1/2;
   widthResetTime2 = appWidth*1/12;
   heightResetTime2 = appHeight*1/12;
-  
+
+  xResetTimeAll = appWidth*0;
+  yResetTimeAll = appHeight*9.5/10;
+  widthResetTimeAll = appWidth-1;
+  heightResetTimeAll = appHeight*1/10;
+
   xStartTime1 = appWidth*0;
   yStartTime1 = appHeight*7/12;
   widthStartTime1 = appWidth*1/12;
@@ -49,11 +62,6 @@ void setup(){
   yStartTime2 = appHeight*7/12;
   widthStartTime2 = appWidth*1/12;
   heightStartTime2 = appHeight*1/12;
-  
-  xResetTimeAll = appWidth*0;
-  yResetTimeAll = appHeight*9.5/10;
-  widthResetTimeAll = appWidth-1;
-  heightResetTimeAll = appHeight*1/10;
   
   xStartTimeAll = appWidth*0;
   yStartTimeAll = appHeight*9/10;
@@ -108,5 +116,23 @@ void mousePressed(){
   }
   if(mouseX>xResetTimeAll && mouseX<xResetTimeAll+widthResetTimeAll && mouseY>yResetTimeAll && mouseY<yResetTimeAll+heightResetTimeAll){
     println("All Time Reset");
+  }
+  if(mouseX>xStartTime1 && mouseX<xStartTime1+widthStartTime1 && mouseY>yStartTime1 && mouseY<yStartTime1+heightStartTime1){
+    println("Time 1 Start");
+  }
+  if(mouxeX>xStartTime2 && mouseX<xStartTime2+widthStartTime2 && mouseY>yStartTime2 && mouseY<yStartTime2+heightStartTime2){
+    println("Time 2 Start");
+  }
+  if(mouseX>xStartTimeAll && mouseX<xStartTimeAll+widthStartTimeAll && mouseY>yStartTimeAll && mouseY<yStartTimeAll+heightStartTimeAll){
+    println("Äll Time Start);
+  }
+  if(mouseX>xStopTime1 && mouseX<xStopTime1+widthStopTime1 && mouseY>yStopTime1 && mouseY<yStopTime1+heightStopTime1){
+    println("Time 1 Stop");
+  }
+  if(mouseX>xStopTime2 && mouseX<xStopTime2+widthStopTime2 && mouseY>yStopTime2 && moueY<yStopTime1+heightStopTime1){
+    println("Time 2 Stop");
+  }
+  if(mouseX>xStopTimeAll && mouseX<xStopTimeAll+widthStopTime1 && mouseY>yStopTimeAll && mouseY<yStopTimeAll+heightStopTimeAll){
+    println("Time All Stop");
   }
 }
