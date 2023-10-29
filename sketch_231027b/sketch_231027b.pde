@@ -124,7 +124,7 @@ void mousePressed(){
     println("Time 2 Start");
   }
   if(mouseX>xStartTimeAll && mouseX<xStartTimeAll+widthStartTimeAll && mouseY>yStartTimeAll && mouseY<yStartTimeAll+heightStartTimeAll){
-    println("Äll Time Start);
+    println("Äll Time Start");
   }
   if(mouseX>xStopTime1 && mouseX<xStopTime1+widthStopTime1 && mouseY>yStopTime1 && mouseY<yStopTime1+heightStopTime1){
     println("Time 1 Stop");
