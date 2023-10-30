@@ -1,5 +1,3 @@
-int appWidth, appHeight;
-
 float xTime1, yTime1, widthTime1, heightTime1;
 float xTime2, yTime2, widthTime2, heightTime2;
 float xStartTime1, yStartTime1, widthStartTime1, heightStartTime1;
@@ -12,13 +10,23 @@ float xResetTime1, yResetTime1, widthResetTime1, heightResetTime1;
 float xResetTime2, yRestTime2, widthResetTime2, heightResetTime2;
 float xResetTimeAll, yResetTimeAll, widthResetTimeAll, heightResetTimeAll;
 
+int appWidth, appHeight;
+
+PFont mono;
+
 void setup(){
   
   println("Width:"+width, "\t", "Height:"+height);
-  println("Display Width: "+displayWidth, "\tDisplay Height: "+displayHeight);
+  println("Display Width: "+displayWidth, "\t Display Height: "+displayHeight);
   size(1000, 500);
   appWidth = width;
   appHeight = height;
+
+  mono = createFont("andalemo.ttf", 128);
+  background(0);
+  textFont(mono);
+  text("10:00", xTime1*1/2, yTime1*1/2);
+  text("2:00", xTime2*1/2, yTime2*1/2);
 
   xTime1 = appWidth*0;
   yTime1 = appHeight*0;
@@ -39,12 +47,21 @@ void setup(){
   yRestTime2 = appHeight*1/2;
   widthResetTime2 = appWidth*1/12;
   heightResetTime2 = appHeight*1/12;
+<<<<<<< HEAD
   
   xResetTimeAll = appWidth*0;
   yResetTimeAll = appHeight*8/10;
   widthResetTimeAll = appWidth-1;
   heightResetTimeAll = appHeight*1/10;
   
+=======
+
+  xResetTimeAll = appWidth*0;
+  yResetTimeAll = appHeight*9.5/10;
+  widthResetTimeAll = appWidth-1;
+  heightResetTimeAll = appHeight*1/10;
+
+>>>>>>> 153f951d3a36b7cdef81b191cf79986707a201c4
   xStartTime1 = appWidth*0;
   yStartTime1 = appHeight*7/12;
   widthStartTime1 = appWidth*1/12;
@@ -59,19 +76,34 @@ void setup(){
   yStartTimeAll = appHeight*9/10;
   widthStartTimeAll = appWidth-1;
   heightStartTimeAll = appHeight*1/10;
+<<<<<<< HEAD
   
   xStopTime1 = appWidth*0;
   yStopTime1 = appHeight*7/12;
   widthStopTime1 = appWidth*1/12;
   heightStopTime1 = appHeight*1/12;
   
+=======
+
+  xStopTime1 = appWidth*0;
+  yStopTime1 = appHeight*7/12;
+  widthSropTime1 = appWidth*1/12;
+  heightStopTime1 = appHeight*1/12;
+
+>>>>>>> 153f951d3a36b7cdef81b191cf79986707a201c4
   xStopTime2 = appWidth*1/2;
   yStopTime2 = appHeight*7/12;
   widthStopTime2 = appWidth*1/12;
   heightStopTime2 = appHeight*1/12;
+<<<<<<< HEAD
   
   xStopTimeAll = appWidth*0;
   yStopTimeAll = appHeight*9/10;
+=======
+
+  xStopTimeAll = appWidth*0;
+  yStopTimeAll = appHeigbt*9/10;
+>>>>>>> 153f951d3a36b7cdef81b191cf79986707a201c4
   widthStopTimeAll = appWidth-1;
   heightStopTimeAll = appHeight*1/10;
   
@@ -88,9 +120,14 @@ void draw(){
   fill(0, 0, 255);
   rect(xResetTime1, yResetTime1, widthResetTime1, heightResetTime1);
   rect(xResetTime2, yRestTime2, widthResetTime2, heightResetTime2);
+<<<<<<< HEAD
   rect(xResetTimeAll, yResetTimeAll, widthResetTimeAll, heightResetTimeAll);
   fill(255, 0, 0);
   rect(xStopTime1, yStopTime1, widthStopTime1, heightStopTime1);
+=======
+  fill(255, 0, 0);
+  rect(xStopTime1, yStopTime1, widthSropTime1, heightStopTime1);
+>>>>>>> 153f951d3a36b7cdef81b191cf79986707a201c4
   rect(xStopTime2, yStopTime2, widthStopTime2, heightStopTime2);
   rect(xStopTimeAll, yStopTimeAll, widthStopTimeAll, heightStopTimeAll);
   
@@ -103,28 +140,51 @@ void mousePressed(){
   if (mouseX>xResetTime1 && mouseX<xResetTime1+widthResetTime1 && mouseY>yResetTime1 && mouseY<yResetTime1+heightResetTime1){
     println("Time 1 Reset");
   }
+<<<<<<< HEAD
   if(mouseX>xResetTime2 && mouseX<xResetTime2+widthResetTime2 && mouseY>yRestTime2 && mouseY<yRestTime2+heightResetTime2){
     println("Time 2 Reset");
   }
   if(mouseX>xResetTimeAll && mouseX<xResetTimeAll+widthResetTimeAll && mouseY>yResetTimeAll && mouseY<yResetTimeAll+heightResetTimeAll){
     println("Time All Reset");
+=======
+  if(mouseX>xResetTime2 && mouseX<xResetTime2+widthResetTime2 && mouseY>yResetTime2 && mouseY<yResetTime2+heightResetTime2){
+    println("Time 2 Reset");
+  }
+  if(mouseX>xResetTimeAll && mouseX<xResetTimeAll+widthResetTimeAll && mouseY>yResetTimeAll && mouseY<yResetTimeAll+heightResetTimeAll){
+    println("All Time Reset");
+>>>>>>> 153f951d3a36b7cdef81b191cf79986707a201c4
   }
   if(mouseX>xStartTime1 && mouseX<xStartTime1+widthStartTime1 && mouseY>yStartTime1 && mouseY<yStartTime1+heightStartTime1){
     println("Time 1 Start");
   }
+<<<<<<< HEAD
   if(mouseX>xStartTime2 && mouseX<xStartTime2+widthStartTime2 && mouseY>yStartTime2 && mouseY<yStartTime2+heightStartTime2){
     println("Time 2 Start");
   }
   if(mouseX>xStartTimeAll && mouseX<xStartTimeAll+widthStartTimeAll && mouseY>yStartTimeAll && mouseY<yStartTimeAll+heightStartTimeAll){
     println("Time All Start");
+=======
+  if(mouxeX>xStartTime2 && mouseX<xStartTime2+widthStartTime2 && mouseY>yStartTime2 && mouseY<yStartTime2+heightStartTime2){
+    println("Time 2 Start");
+  }
+  if(mouseX>xStartTimeAll && mouseX<xStartTimeAll+widthStartTimeAll && mouseY>yStartTimeAll && mouseY<yStartTimeAll+heightStartTimeAll){
+    println("Äll Time Start");
+>>>>>>> 153f951d3a36b7cdef81b191cf79986707a201c4
   }
   if(mouseX>xStopTime1 && mouseX<xStopTime1+widthStopTime1 && mouseY>yStopTime1 && mouseY<yStopTime1+heightStopTime1){
     println("Time 1 Stop");
   }
+<<<<<<< HEAD
   if(mouseX>xStopTime2 && mouseX<xStopTime2+widthStopTime2 && mouseY>yStopTime2 && mouseY<yStopTime1+heightStopTime1){
     println("Time 2 Stop");
   }
   if(mouseX>xStopTimeAll && mouseX<xStopTimeAll+widthStopTimeAll && mouseY>yStopTimeAll && mouseY<yStopTimeAll+heightStopTimeAll){
+=======
+  if(mouseX>xStopTime2 && mouseX<xStopTime2+widthStopTime2 && mouseY>yStopTime2 && moueY<yStopTime1+heightStopTime1){
+    println("Time 2 Stop");
+  }
+  if(mouseX>xStopTimeAll && mouseX<xStopTimeAll+widthStopTime1 && mouseY>yStopTimeAll && mouseY<yStopTimeAll+heightStopTimeAll){
+>>>>>>> 153f951d3a36b7cdef81b191cf79986707a201c4
     println("Time All Stop");
   }
 }
