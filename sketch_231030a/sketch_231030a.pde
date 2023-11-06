@@ -12,6 +12,14 @@ float xResetTimeAll, yResetTimeAll, widthResetTimeAll, heightResetTimeAll;
 
 int appWidth, appHeight;
 
+boolean time1Start = false;
+boolean time2Start = false;
+boolean timeAllStart = false;
+
+String time1 = "10:00", time2 = "2:00";
+
+PFont text;
+
 void setup(){
   
   println("Width:"+width, "\t", "Height:"+height);
@@ -85,29 +93,50 @@ void setup(){
   widthStopTimeAll = appWidth-1;
   heightStopTimeAll = appHeight*1/10;
   
+  text = createFont("ArialMT", 55);
+  
 }
 void draw(){
+  
+  if(time1Start == true || time2Start == true){
+    timeAllStart = true;
+  }
+  
+  fill(0, 0, 0);
+  textAlign(CENTER, CENTER);
+  textFont(text, 50);
+  text(time1, xTime1, yTime1, widthTime1, heightTime1);
+  textAlign(CENTER, CENTER);
+  textFont(text, 50);
+  text( time2, xTime2, yTime2, widthTime2, heightTime2);
   
   fill(255, 255, 255);
   rect(xTime1, yTime1, widthTime1, heightTime1);
   rect(xTime2, yTime2, widthTime2, heightTime2);
   fill(0, 255, 0);
-  rect(xStartTime1, yStartTime1, widthStartTime1, heightStartTime1);
-  rect(xStartTime2, yStartTime2, widthStartTime2, heightStartTime2);
-  rect(xStartTimeAll, yStartTimeAll, widthStartTimeAll, heightStartTimeAll);
+  if(time1Start == true){
+    rect(xStartTime1, yStartTime1, widthStartTime1, heightStartTime1);
+  }
+  if(time2Start == true){
+    rect(xStartTime2, yStartTime2, widthStartTime2, heightStartTime2);
+  }
+  if(timeAllStart == true){
+    rect(xStartTimeAll, yStartTimeAll, widthStartTimeAll, heightStartTimeAll);
+  }
   fill(0, 0, 255);
   rect(xResetTime1, yResetTime1, widthResetTime1, heightResetTime1);
   rect(xResetTime2, yRestTime2, widthResetTime2, heightResetTime2);
   rect(xResetTimeAll, yResetTimeAll, widthResetTimeAll, heightResetTimeAll);
   fill(255, 0, 0);
-  rect(xStopTime1, yStopTime1, widthStopTime1, heightStopTime1);
-  fill(255, 0, 0);
-  rect(xStopTime1, yStopTime1, widthStopTime1, heightStopTime1);
-  rect(xStopTime2, yStopTime2, widthStopTime2, heightStopTime2);
-  rect(xStopTimeAll, yStopTimeAll, widthStopTimeAll, heightStopTimeAll);
-  
-}
-void keyPressed(){
+  if(time1Start == false){
+    rect(xStopTime1, yStopTime1, widthStopTime1, heightStopTime1);
+  }
+  if(time2Start == false){
+    rect(xStopTime2, yStopTime2, widthStopTime2, heightStopTime2);
+  }
+  if(timeAllStart == false){
+    rect(xStopTimeAll, yStopTimeAll, widthStopTimeAll, heightStopTimeAll);
+  }
   
 }
 void mousePressed(){
@@ -121,22 +150,28 @@ void mousePressed(){
   if(mouseX>xResetTimeAll && mouseX<xResetTimeAll+widthResetTimeAll && mouseY>yResetTimeAll && mouseY<yResetTimeAll+heightResetTimeAll){
     println("Time All Reset");
   }
-  if(mouseX>xStartTime1 && mouseX<xStartTime1+widthStartTime1 && mouseY>yStartTime1 && mouseY<yStartTime1+heightStartTime1){
+  if( time1Start == true && mouseX>xStartTime1 && mouseX<xStartTime1+widthStartTime1 && mouseY>yStartTime1 && mouseY<yStartTime1+heightStartTime1){
     println("Time 1 Start");
+    time1Start = false;
   }
-  if(mouseX>xStartTime2 && mouseX<xStartTime2+widthStartTime2 && mouseY>yStartTime2 && mouseY<yStartTime2+heightStartTime2){
+  if( time2Start == true && mouseX>xStartTime2 && mouseX<xStartTime2+widthStartTime2 && mouseY>yStartTime2 && mouseY<yStartTime2+heightStartTime2){
     println("Time 2 Start");
+    time2Start = false;
   }
-  if(mouseX>xStartTimeAll && mouseX<xStartTimeAll+widthStartTimeAll && mouseY>yStartTimeAll && mouseY<yStartTimeAll+heightStartTimeAll){
+  if( timeAllStart == true && mouseX>xStartTimeAll && mouseX<xStartTimeAll+widthStartTimeAll && mouseY>yStartTimeAll && mouseY<yStartTimeAll+heightStartTimeAll){
     println("Time All Start");
+    timeAllStart = false;
   }
-  if(mouseX>xStopTime1 && mouseX<xStopTime1+widthStopTime1 && mouseY>yStopTime1 && mouseY<yStopTime1+heightStopTime1){
+  if( time1Start == false && mouseX>xStopTime1 && mouseX<xStopTime1+widthStopTime1 && mouseY>yStopTime1 && mouseY<yStopTime1+heightStopTime1){
     println("Time 1 Stop");
+    time1Start = true;
   }
-  if(mouseX>xStopTime2 && mouseX<xStopTime2+widthStopTime2 && mouseY>yStopTime2 && mouseY<yStopTime1+heightStopTime1){
+  if( time2Start == false && mouseX>xStopTime2 && mouseX<xStopTime2+widthStopTime2 && mouseY>yStopTime2 && mouseY<yStopTime1+heightStopTime1){
     println("Time 2 Stop");
+    time2Start = true;
   }
-  if(mouseX>xStopTimeAll && mouseX<xStopTimeAll+widthStopTimeAll && mouseY>yStopTimeAll && mouseY<yStopTimeAll+heightStopTimeAll){
+  if( timeAllStart == false && mouseX>xStopTimeAll && mouseX<xStopTimeAll+widthStopTimeAll && mouseY>yStopTimeAll && mouseY<yStopTimeAll+heightStopTimeAll){
     println("Time All Stop");
+    timeAllStart = true;
   }
 }
