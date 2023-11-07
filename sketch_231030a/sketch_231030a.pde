@@ -100,7 +100,9 @@ void draw(){
   
   if(time1Start == true || time2Start == true){
     timeAllStart = true;
-  }
+}else{
+  timeAllStart = false;
+}
   
   fill(0, 0, 0);
   textAlign(CENTER, CENTER);
@@ -113,6 +115,7 @@ void draw(){
   fill(255, 255, 255);
   rect(xTime1, yTime1, widthTime1, heightTime1);
   rect(xTime2, yTime2, widthTime2, heightTime2);
+
   fill(0, 255, 0);
   if(time1Start == true){
     rect(xStartTime1, yStartTime1, widthStartTime1, heightStartTime1);
@@ -123,10 +126,12 @@ void draw(){
   if(timeAllStart == true){
     rect(xStartTimeAll, yStartTimeAll, widthStartTimeAll, heightStartTimeAll);
   }
+
   fill(0, 0, 255);
   rect(xResetTime1, yResetTime1, widthResetTime1, heightResetTime1);
   rect(xResetTime2, yRestTime2, widthResetTime2, heightResetTime2);
   rect(xResetTimeAll, yResetTimeAll, widthResetTimeAll, heightResetTimeAll);
+
   fill(255, 0, 0);
   if(time1Start == false){
     rect(xStopTime1, yStopTime1, widthStopTime1, heightStopTime1);
@@ -161,6 +166,8 @@ void mousePressed(){
   if( timeAllStart == true && mouseX>xStartTimeAll && mouseX<xStartTimeAll+widthStartTimeAll && mouseY>yStartTimeAll && mouseY<yStartTimeAll+heightStartTimeAll){
     println("Time All Start");
     timeAllStart = false;
+    time1Start = false;
+    time2Start = false;
   }
   if( time1Start == false && mouseX>xStopTime1 && mouseX<xStopTime1+widthStopTime1 && mouseY>yStopTime1 && mouseY<yStopTime1+heightStopTime1){
     println("Time 1 Stop");
@@ -173,5 +180,7 @@ void mousePressed(){
   if( timeAllStart == false && mouseX>xStopTimeAll && mouseX<xStopTimeAll+widthStopTimeAll && mouseY>yStopTimeAll && mouseY<yStopTimeAll+heightStopTimeAll){
     println("Time All Stop");
     timeAllStart = true;
+    time1Start = true;
+    time1Start = true;
   }
 }
