@@ -13,10 +13,11 @@ float xResetTimeAll, yResetTimeAll, widthResetTimeAll, heightResetTimeAll;
 int appWidth, appHeight;
 int time1Defalt = 0;
 int time2Defalt = 0;
+int test;
 
-boolean time1Start = false;
-boolean time2Start = false;
-boolean timeAllStart = false;
+boolean time1Start = true;
+boolean time2Start = true;
+boolean timeAllStart = true;
 boolean resetTime1 = false;
 boolean resetTime2 = false;
 boolean resetAllTime = false;
@@ -27,9 +28,10 @@ String time1 = "10:00", time2 = "2:00";
 PFont text;
 
 void setup(){
+  
+  frameRate(60);
 
   println("Width:"+width, "\t", "Height:"+height);
-  println("Display Width: "+displayWidth, "\t Display Height: "+displayHeight);
   size(1000, 500);
   appWidth = width;
   appHeight = height;
@@ -98,11 +100,17 @@ void setup(){
   yStopTimeAll = appHeight*9/10;
   widthStopTimeAll = appWidth-1;
   heightStopTimeAll = appHeight*1/10;
+  
+  test = 59;
 
   text = createFont("ArialMT", 55);
 }
 void draw(){
-
+  
+  if(){
+    println(test --);
+  }
+      
   if(resetTime1 == true){
     println("resetTime1 acknowledged");
     resetTime1 = false;
@@ -117,10 +125,8 @@ void draw(){
     resetTime2 = true;
     resetTime1 = true;
   }
-  if(time1Start == true || time2Start == true || timeAllStart == true){
+  if(time1Start == true || time2Start == true){
     timeAllStart = true;
-  }else{
-    timeAllStart = false;
   }
   fill(0, 0, 0);
   textAlign(CENTER, CENTER);
@@ -220,12 +226,3 @@ void mousePressed(){
     typeTime1 = true;
   }
 }
-void keypessed(){
-  if(keyCode == ALT){
-    if(typeTime1 = false){
-      typeTime1 = true;
-      println("typeing in timer 1");
-    }else{
-      typeTime1 = false;
-      println("typeing in timer 2");
-  }
