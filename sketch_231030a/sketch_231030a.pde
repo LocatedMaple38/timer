@@ -17,6 +17,10 @@ int time2Defalt = 0;
 boolean time1Start = false;
 boolean time2Start = false;
 boolean timeAllStart = false;
+boolean resetTime1 = false;
+boolean resetTime2 = false;
+boolean resetAllTime = false
+boolean typeTime1 = false
 
 String time1 = "10:00", time2 = "2:00";
 
@@ -100,11 +104,26 @@ void setup(){
 }
 void draw(){
 
+  if(resetTime1 == true){
+    println("resetTime1 acknowledged");
+    resetTime1 = false;
+  }
+  if(resetTime2 == true){
+    println("resetTime2 acknowledged");
+    resetTime2 = false;
+  }
+  if(ResetAllTime == true){
+    println("resetAllTime acknowledged");
+    resetAllTime = false;
+    resetTime2 = true;
+    resetTime1 = true;
+  }
+
   if(time1Start == true || time2Start == true || timeAllStart == true){
     timeAllStart = true;
   }else{
     timeAllStart = false;
-}
+  }
 
   fill(0, 0, 0);
   textAlign(CENTER, CENTER);
@@ -149,12 +168,15 @@ void mousePressed(){
 
   if (mouseX>xResetTime1 && mouseX<xResetTime1+widthResetTime1 && mouseY>yResetTime1 && mouseY<yResetTime1+heightResetTime1){
     println("Time 1 Reset");
+    resetTime1 = true;
   }
   if(mouseX>xResetTime2 && mouseX<xResetTime2+widthResetTime2 && mouseY>yRestTime2 && mouseY<yRestTime2+heightResetTime2){
     println("Time 2 Reset");
+    resetTime2 = true;
   }
   if(mouseX>xResetTimeAll && mouseX<xResetTimeAll+widthResetTimeAll && mouseY>yResetTimeAll && mouseY<yResetTimeAll+heightResetTimeAll){
     println("Time All Reset");
+    resetAllTime = true;
   }
   if(time1Start == true && mouseX>xStartTime1 && mouseX<xStartTime1+widthStartTime1 && mouseY>yStartTime1 && mouseY<yStartTime1+heightStartTime1){
     println("Time 1 Start");
@@ -186,5 +208,14 @@ void mousePressed(){
   }
 }
 void keypessed(){
-
+  if(keyCode == ALT && key == "1" || key == "2"){
+    if(key == "1"){
+      typeTime1 = true;
+      println("typeing in timer 1");
+    }
+    if(key == "2"){
+`	    typeTime1 = false;
+      println("typing in timer 2");
+    }
+  }
 }
