@@ -100,7 +100,6 @@ void setup(){
   heightStopTimeAll = appHeight*1/10;
 
   text = createFont("ArialMT", 55);
-  
 }
 void draw(){
 
@@ -118,17 +117,16 @@ void draw(){
     resetTime2 = true;
     resetTime1 = true;
   }
-
   if(time1Start == true || time2Start == true || timeAllStart == true){
     timeAllStart = true;
   }else{
     timeAllStart = false;
   }
-
   fill(0, 0, 0);
   textAlign(CENTER, CENTER);
   textFont(text, 25);
   text(time1, xTime1, yTime1, widthTime1, heightTime1);
+  
   textAlign(CENTER, CENTER);
   textFont(text, 25);
   text(time2, xTime2, yTime2, widthTime2, heightTime2);
@@ -162,7 +160,6 @@ void draw(){
   if(timeAllStart == false){
     rect(xStopTimeAll, yStopTimeAll, widthStopTimeAll, heightStopTimeAll);
   }
-  
 }
 void mousePressed(){
   
@@ -223,3 +220,12 @@ void mousePressed(){
     typeTime1 = true;
   }
 }
+void keypessed(){
+  if(keyCode == ALT){
+    if(typeTime1 = false){
+      typeTime1 = true;
+      println("typeing in timer 1");
+    }else{
+      typeTime1 = false;
+      println("typeing in timer 2");
+  }
