@@ -107,9 +107,9 @@ void setup(){
 }
 void draw(){
   
-  if(){
+  /*if(){
     println(test --);
-  }
+  }*/
       
   if(resetTime1 == true){
     println("resetTime1 acknowledged");
