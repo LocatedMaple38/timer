@@ -15,15 +15,19 @@ int time1Defalt = 0;
 int time2Defalt = 0;
 int test;
 
-boolean time1Start = true;
-boolean time2Start = true;
-boolean timeAllStart = true;
+boolean time1Start = false;
+boolean time2Start = false;
+boolean timeAllStart = false;
 boolean resetTime1 = false;
 boolean resetTime2 = false;
 boolean resetAllTime = false;
 boolean typeTime1 = false;
+boolean typeTime2 = false;
 
 String time1 = "10:00", time2 = "2:00";
+String stop = "Stop", stopAll = "Stop All";
+String reset = "Reset", resetAll = "Reset All";
+String start = "Start", startAll = "StartAll";
 
 PFont text;
 
@@ -106,21 +110,14 @@ void setup(){
   text = createFont("ArialMT", 55);
 }
 void draw(){
-  
-  /*if(){
-    println(test --);
-  }*/
       
   if(resetTime1 == true){
-    println("resetTime1 acknowledged");
     resetTime1 = false;
   }
   if(resetTime2 == true){
-    println("resetTime2 acknowledged");
     resetTime2 = false;
   }
   if(resetAllTime == true){
-    println("resetAllTime acknowledged");
     resetAllTime = false;
     resetTime2 = true;
     resetTime1 = true;
@@ -128,63 +125,81 @@ void draw(){
   if(time1Start == true || time2Start == true){
     timeAllStart = true;
   }
-  fill(0, 0, 0);
-  textAlign(CENTER, CENTER);
-  textFont(text, 25);
-  text(time1, xTime1, yTime1, widthTime1, heightTime1);
-  
-  textAlign(CENTER, CENTER);
-  textFont(text, 25);
-  text(time2, xTime2, yTime2, widthTime2, heightTime2);
 
-  fill(255, 255, 255);
+  fill(255);
   rect(xTime1, yTime1, widthTime1, heightTime1);
   rect(xTime2, yTime2, widthTime2, heightTime2);
 
   fill(0, 255, 0);
   if(time1Start == true){
     rect(xStartTime1, yStartTime1, widthStartTime1, heightStartTime1);
+  }else{
+    rect(xStopTime1, yStopTime1, widthStopTime1, heightStopTime1);
   }
   if(time2Start == true){
     rect(xStartTime2, yStartTime2, widthStartTime2, heightStartTime2);
+  }else{
+    rect(xStopTime2, yStopTime2, widthStopTime2, heightStopTime2);
   }
   if(timeAllStart == true){
     rect(xStartTimeAll, yStartTimeAll, widthStartTimeAll, heightStartTimeAll);
+  }else{
+    rect(xStopTimeAll, yStopTimeAll, widthStopTimeAll, heightStopTimeAll);
   }
+  
   fill(0, 0, 255);
   rect(xResetTime1, yResetTime1, widthResetTime1, heightResetTime1);
   rect(xResetTime2, yRestTime2, widthResetTime2, heightResetTime2);
   rect(xResetTimeAll, yResetTimeAll, widthResetTimeAll, heightResetTimeAll);
-
-  fill(255, 0, 0);
-  if(time1Start == false){
-    rect(xStopTime1, yStopTime1, widthStopTime1, heightStopTime1);
+  fill(0);
+  textAlign(CENTER, CENTER);
+  textFont(text, 25);
+  text(time1, xTime1, yTime1, widthTime1, heightTime1);
+  text(time2, xTime2, yTime2, widthTime2, heightTime2);
+  text(reset, xResetTime1, yResetTime1, widthResetTime1, heightResetTime1);
+  text(reset, xResetTime2, yRestTime2, widthResetTime2, heightResetTime2);
+  text(resetAll, xResetTimeAll, yResetTimeAll, widthResetTimeAll, heightResetTimeAll);
+  
+  if(time1Start == true){
+    text(start, xStartTime1, yStartTime1, widthStartTime1, heightStartTime1);
+  }else{
+    text(stop, xStopTime1, yStopTime1, widthStopTime1, heightStopTime1);
   }
-  if(time2Start == false){
-    rect(xStopTime2, yStopTime2, widthStopTime2, heightStopTime2);
+  
+  if(time2Start == true){
+    text(start, xStartTime2, yStartTime2, widthStartTime2, heightStartTime2);
+  }else{
+    text(stop, xStartTime2, yStartTime2, widthStartTime2, heightStartTime2);
   }
-  if(timeAllStart == false){
-    rect(xStopTimeAll, yStopTimeAll, widthStopTimeAll, heightStopTimeAll);
+  
+  if(timeAllStart == true){
+    text(startAll, xStartTimeAll, yStartTimeAll, widthStartTimeAll, heightStartTimeAll);
+  }else{
+    text(stopAll, xStartTimeAll, yStartTimeAll, widthStartTimeAll, heightStartTimeAll);
   }
+  
 }
 void mousePressed(){
   if(mouseX>xTime1 && mouseX<xTime1+widthTime1 && mouseY>yTime1 && mouseY<yTime1+heightTime1){
     typeTime1 = false;
   }
   if(mouseX>xTime2 && mouseX<xTime2+widthTime2 && mouseY>yTime2 && mouseY<yTime2+heightTime2){
-    typeTime1 = true;
+    typeTime2 = true;
   }
 }
 void keyPressed(){
-  if(key == CONTROL && key == LEFT || key == RIGHT && key == 'S' || key == 's'){
-    if(key == LEFT && key == 'S' || key == 's'){
-      
+    if(time1Start == true && key == LEFT){
+      time1Start = false;
+      println(time1Start);
+    }else if(time1Start == false && key == LEFT){
+      time1Start = false;
+      println(time1Start);
     }
-    if(key == RIGHT && key == 'S' || key == 's'){
-      
-    }
-    if(key == 'S' || key == 's' ! key == LEFT && ! key == RIGHT){
-      
+    if(time2Start == true && key == RIGHT){
+      time2Start = false;
+      println(time2Start);
+    }else if(time2Start == false && key == RIGHT){
+      time2Start = false;
+      println(time2Start);
     }
   }
-}
